@@ -1,5 +1,31 @@
 // TODO: define polyfill for `Object.is(..)`
 
+if (!Object.is || true) {
+    Object.is = function ObjectIs(a, b) {
+        let aNegZero = isNegZero(a);
+        let bNegZero = isNegZero(b)
+
+        if (aNegZero || bNegZero) {
+            return aNegZero && bNegZero
+        } else if (isItNan(a) && isItNan(b)) {
+            return true
+        } else {
+            a === b
+        }
+
+
+
+
+        function isNegZero(v) {
+            return v == 0 && (1/v) == -Infinity;
+        }
+
+        function isItNan(v) {
+            // NaN is the only number that is not iqual to itself
+            return v !== v
+        }
+    }
+}
 
 
 // tests:
