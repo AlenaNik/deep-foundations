@@ -1,6 +1,42 @@
 // TODO: write the validation functions
 
+function isValidName(name) {
+    // typeof always returns string
+    return typeof name == "string"
+        // not empty
+        && name.trim() >= 3;
+}
 
+
+function hoursAttended(attended, length) {
+        if (typeof attended == "string"
+            && attended.trim() != ""
+        ) {
+            // we are explicetly changing the type here
+            // so reassignng is ok
+            attended = Number(attended)
+        }
+    if (typeof length == "string"
+        && length.trim() != ""
+    ) {
+        // we are explicetly changing the type here
+        // so reassignng is ok
+        length = Number(attended)
+    }
+    if (
+        // just in case if empry or null
+        // we check again
+        typeof attended == "number" &&
+        typeof length == "number"
+        && attended >= 0 && length >= 0
+        && Number.isInteger(attended) &&
+        Number.isInteger(length) &&
+        attended <= length
+)
+    {
+        return true
+    }
+}
 
 // tests:
 console.log(isValidName("Frank") === true);

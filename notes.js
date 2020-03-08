@@ -36,5 +36,7 @@
 
 // (1 < 2) < 3
 // (true) < 3 -> "true" converts to a number due to <
-// 1 < 3 -> true BY ACCEDENT
+// 1 < 3 -> true BY ACCIDENT
+// Booleans converts themselfs to a number
+
 
