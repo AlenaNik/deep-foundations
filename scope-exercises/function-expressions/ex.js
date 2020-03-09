@@ -1,3 +1,27 @@
+let getStudentFormId = studentId =>
+	studentRecords.find(
+		record => record.id === studentId
+	)
+let printRecordIds = recordIds =>
+	recordIds.map(getStudentFormId)
+		.sort(
+			(record1, record2) => (record1.name < record2.name) ? -1 : (record1.name > record2.name) ? 1 : 0
+		)
+		.forEach(
+			record => console.log(`${record.name}, ${record.id}`)
+		)
+
+
+let paidStudentsToEnroll = () => [
+	...currentEnrollment,
+	...(
+		studentRecords.filter(
+			record => (record.paid && !currentEnrollment.includes(record.id))
+				.map(record => record.id)
+		)
+	)
+]
+
 function getStudentById(studentId) {
 	return studentRecords.find(function matchId(record) {
 		return (record.id == studentId);
